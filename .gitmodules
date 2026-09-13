@@ -1,4 +1,0 @@
-[submodule "vendor/tasklib"]
-	path = vendor/tasklib
-	url = git@github.com:dyson-labs-org/tasklib.git
-	branch = master

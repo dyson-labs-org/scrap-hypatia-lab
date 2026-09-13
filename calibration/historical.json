@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "provenance": "User-provided retrospective summary in planning conversation; raw observations not supplied",
+  "verification": "not independently reproduced",
+  "crypto": "Ed25519",
+  "network": "single-switch Ethernet LAN",
+  "issuer": "Jetson Orin Nano",
+  "executor": "BeagleBone Black BBB-02",
+  "issuance_ms": {
+    "mean": 5.26,
+    "p50": 5.0,
+    "p95": 6.55,
+    "p99": 7.51
+  },
+  "preissued_round_trip_ms": {
+    "mean": 17.62,
+    "p50": 18.0,
+    "p95": 19.55,
+    "p99": 20.0,
+    "accepted": 50
+  },
+  "executor_rss_kb": {
+    "idle": 2432,
+    "load": 2516
+  },
+  "executor_cpu_ticks": {
+    "user": 32,
+    "system": 15,
+    "clock_ticks_per_second": null
+  },
+  "restrictions": [
+    "Round-trip time is not executor service time",
+    "No fitted latency distribution without raw data",
+    "No assumption of actual settlement from claim emission",
+    "No substitution for secp256k1 measurements"
+  ]
+}

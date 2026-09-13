@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "ns3": {
+      "url": "https://gitlab.com/nsnam/ns-3-dev.git",
+      "commit": "d2add90b452d600cfb4859baed8e9ea633519447",
+      "path": ".deps/ns-3"
+    },
+    "satellite": {
+      "url": "https://github.com/sns3/sns3-satellite.git",
+      "commit": "2c0c6d4d7fd1628eda1b923a7e135749513769fa",
+      "path": ".deps/ns-3/contrib/satellite"
+    },
+    "traffic": {
+      "url": "https://github.com/sns3/traffic.git",
+      "commit": "2710ed71c2cba9d92940bdf53ad85159504329d9",
+      "path": ".deps/ns-3/contrib/traffic"
+    },
+    "magister_stats": {
+      "url": "https://github.com/sns3/stats.git",
+      "commit": "003f6a29ce74808d0b2579fd16a9718f793f5bfe",
+      "path": ".deps/ns-3/contrib/magister-stats"
+    },
+    "satellite_data": {
+      "url": "https://github.com/sns3/sns3-data.git",
+      "commit": "4200675fa10f3eb9ba3627bc664240a331be4ba9",
+      "path": ".deps/ns-3/contrib/satellite/data",
+      "sparse": [
+        "scenarios",
+        "sgp4",
+        "sims",
+        "additional-input/antennapatterns",
+        "additional-input/linkresults",
+        "additional-input/fadingtraces",
+        "additional-input/interferencetraces",
+        "additional-input/rxpowertraces",
+        "additional-input/sinrmeaserror",
+        "additional-input/utpositions"
+      ]
+    }
+  },
+  "scrap_reference": {
+    "repository": "https://github.com/dyson-labs-org/scrap",
+    "commit": "585f4478353e1250b1177f7758624b32282b5c3b",
+    "path": "spec/SCRAP.md",
+    "blob": "4a3d98fbf9eccdfcd4751d775f1a4516f6d18789",
+    "role": "design reference only; no SCRAP implementation dependency"
+  }
+}
