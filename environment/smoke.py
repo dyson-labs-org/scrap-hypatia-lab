@@ -45,6 +45,10 @@ def main():
         parser.error('Scenario not found in pinned satellite data.')
     output = ROOT / 'runs' / args.run_id
     output.mkdir(parents=True, exist_ok=False)
+    # SNS-3 locates data during static initialization, before command-line parsing.
+    data_parent = output / 'contrib/satellite'
+    data_parent.mkdir(parents=True)
+    (data_parent / 'data').symlink_to(ROOT / '.deps/ns-3/contrib/satellite/data')
     stats = output / 'statistics'
     stats.mkdir()
     program = shlex.join(['sat-constellation-example',
