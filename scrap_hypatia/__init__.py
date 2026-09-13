@@ -1,1 +1,0 @@
-"""Local Hypatia adapter package."""
