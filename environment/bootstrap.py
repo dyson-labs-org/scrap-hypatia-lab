@@ -61,6 +61,12 @@ def main():
             raise RuntimeError('Dependency path must remain inside .deps')
         checkout(path, item)
     ns3 = ROOT / '.deps/ns-3'
+    source = ROOT / 'src/scrap/relay-lifecycle.cc'
+    link = ns3 / 'scratch/scrap-relay-lifecycle.cc'
+    if not link.exists():
+        link.symlink_to(source)
+    if link.resolve() != source:
+        raise RuntimeError('Unexpected SCRAP integration source path')
     run(str(ns3 / 'ns3'), 'configure', '-G', 'Ninja', '--build-profile=default',
         '--enable-asserts', '--enable-tests', '--enable-examples',
         '--disable-python-bindings', '--disable-werror',

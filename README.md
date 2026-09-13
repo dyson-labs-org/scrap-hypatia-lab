@@ -1,7 +1,7 @@
 # SCRAP SNS-3 Lab
 
 A fresh foundation for an Earth-observation delivery study using SNS-3 packet
-simulation. The custom SCRAP application and customer experiments are not yet implemented. The repository retains its historical `scrap-hypatia-lab` name.
+simulation. A behavioral relay application is provided; onboard EO and customer experiments remain to be implemented. The repository retains its historical `scrap-hypatia-lab` name.
 The previous implementation is preserved by Git history and the recovery tag
 `archive/pre-sns3-rebuild-20260913`; none of its code is used by this lab.
 
@@ -39,7 +39,7 @@ ignored `runs/`; each published result must include its run manifest.
 
 1. Run `python3 -m unittest discover -s tests -v` for bootstrap safeguards.
 2. Build and execute the upstream example above successfully.
-3. Add the custom application and protocol-profile conformance tests.
+3. Build `scrap-relay-lifecycle` and run the six behavioral integration cases.
 4. Run paired EO workloads and failure scenarios before reporting comparisons.
 
 The bootstrap is not a SCRAP simulation. No customer result is established by
@@ -49,3 +49,5 @@ The smoke runner creates a new `runs/<run-id>/` directory with console output,
 statistics, and a manifest of revisions, input hashes, toolchain, seed, command,
 and exit status. Existing run directories are never overwritten. A zero exit
 code alone does not establish useful delivery: inspect the traffic statistics.
+
+See `docs/relay-profile.md` for the new application lifecycle and its six integration cases.
