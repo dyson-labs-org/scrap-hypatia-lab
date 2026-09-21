@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-09-21T18:21:05.512793+00:00",
+  "unit_tests": 14,
+  "unit_status": "passed",
+  "compiler": "c++ (GCC) 16.2.1 20260810",
+  "python": "3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728]",
+  "dependencies": {
+    "schema_version": 1,
+    "sources": {
+      "ns3": {
+        "url": "https://gitlab.com/nsnam/ns-3-dev.git",
+        "commit": "d2add90b452d600cfb4859baed8e9ea633519447",
+        "path": ".deps/ns-3"
+      },
+      "satellite": {
+        "url": "https://github.com/sns3/sns3-satellite.git",
+        "commit": "2c0c6d4d7fd1628eda1b923a7e135749513769fa",
+        "path": ".deps/ns-3/contrib/satellite"
+      },
+      "traffic": {
+        "url": "https://github.com/sns3/traffic.git",
+        "commit": "2710ed71c2cba9d92940bdf53ad85159504329d9",
+        "path": ".deps/ns-3/contrib/traffic"
+      },
+      "magister_stats": {
+        "url": "https://github.com/sns3/stats.git",
+        "commit": "003f6a29ce74808d0b2579fd16a9718f793f5bfe",
+        "path": ".deps/ns-3/contrib/magister-stats"
+      },
+      "satellite_data": {
+        "url": "https://github.com/sns3/sns3-data.git",
+        "commit": "4200675fa10f3eb9ba3627bc664240a331be4ba9",
+        "path": ".deps/ns-3/contrib/satellite/data",
+        "sparse": [
+          "scenarios",
+          "sgp4",
+          "sims",
+          "additional-input/antennapatterns",
+          "additional-input/linkresults",
+          "additional-input/fadingtraces",
+          "additional-input/interferencetraces",
+          "additional-input/rxpowertraces",
+          "additional-input/sinrmeaserror",
+          "additional-input/utpositions"
+        ]
+      }
+    },
+    "scrap_reference": {
+      "repository": "https://github.com/dyson-labs-org/scrap",
+      "commit": "585f4478353e1250b1177f7758624b32282b5c3b",
+      "path": "spec/SCRAP.md",
+      "blob": "4a3d98fbf9eccdfcd4751d775f1a4516f6d18789",
+      "role": "design reference only; no SCRAP implementation dependency"
+    }
+  },
+  "working_tree_base": "de9de55117d68e5aafc21ff297d7983c177e93fb",
+  "source_sha256": {
+    "src/scrap/onboard-downlink.cc": "d5f34950d832d71918fe8d374eaadd400a85c9858adc2eb11f98214e5bbf8f7c",
+    "src/scrap/relay-lifecycle.cc": "14009a2d340f432b73eb90c4abdfbe56fb07b72033732208b9af960aadbc57ba",
+    "environment/bootstrap.py": "00186e3aff4f91bef2ad96c3ccb528c66fbbb52e8d7ac7ff32bc44995798adde",
+    "environment/smoke.py": "cf490a72bcee19779f804a7991176b2dd5f25554bacdbf7da02dcd7233e95f46",
+    "tests/run_onboard.py": "4a176d7cd6bab1c324b3b3ae63bc381e52ced658112a0ec8291d21ff481a6162",
+    "tests/test_onboard_validation.py": "2b7da2dd99d38498c55fc5d6c4c4fe884edb23d3a8e04b3a9d424a964fa91eb0"
+  },
+  "onboard": [
+    {
+      "run_id": "onboard-native-20260921-0-normal",
+      "scenario": "constellation-leo-2-satellites",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "5bdec3ae53a3bdf0239a7c52b6556c11b7e9c902a870be0c2c48b48b1ab8ee8a",
+      "console_sha256": "8679a6d135154b4e391dafc2c0332c7e590aa4294809b9b8a4594453ca5e4bdd",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "source_node": 0,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 1,
+        "payload_bytes": 1024,
+        "sent": 1,
+        "received": 1,
+        "frames": 1,
+        "payload_valid": true,
+        "enqueue_s": 1,
+        "tx_s": 1.000024704,
+        "received_s": 1.007307076,
+        "distance_m": 2087714.13121582,
+        "observed_frame_s": 0.000319507,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1,
+          "source_node": 0,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 1024
+        },
+        {
+          "event": "feeder-frame-tx",
+          "time_s": 1.000024704,
+          "source_node": 0,
+          "device_index": 0,
+          "feeder_mac": "01-06-00:00:00:00:00:06",
+          "beam": 43,
+          "frame_duration_s": 0.000319507,
+          "distance_m": 2087714.13121582
+        },
+        {
+          "event": "ground-application-rx",
+          "time_s": 1.007307076,
+          "receiver_node": 2,
+          "device_index": 1,
+          "payload_bytes": 1024
+        }
+      ]
+    },
+    {
+      "run_id": "onboard-native-20260921-1-normal",
+      "scenario": "constellation-leo-2-satellites",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "19200492596745dfdd6660e2fe6ab35506dddb38c85c8a70d7d4370a492493ad",
+      "console_sha256": "da1c2aa584e239c44b4f9496ffb9fd84d664c2570dd07ddac3d334f52cef57d2",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "source_node": 0,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 1,
+        "payload_bytes": 64,
+        "sent": 1,
+        "received": 1,
+        "frames": 1,
+        "payload_valid": true,
+        "enqueue_s": 1.013,
+        "tx_s": 1.013026176,
+        "received_s": 1.020308479,
+        "distance_m": 2087693.44955575,
+        "observed_frame_s": 0.000319507,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1.013,
+          "source_node": 0,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 64
+        },
+        {
+          "event": "feeder-frame-tx",
+          "time_s": 1.013026176,
+          "source_node": 0,
+          "device_index": 0,
+          "feeder_mac": "01-06-00:00:00:00:00:06",
+          "beam": 43,
+          "frame_duration_s": 0.000319507,
+          "distance_m": 2087693.44955575
+        },
+        {
+          "event": "ground-application-rx",
+          "time_s": 1.020308479,
+          "receiver_node": 2,
+          "device_index": 1,
+          "payload_bytes": 64
+        }
+      ]
+    },
+    {
+      "run_id": "onboard-native-20260921-2-normal",
+      "scenario": "constellation-leo-2-satellites",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "9d72c4621b67d905605b7920975e3cfc5d0ab36881564a1cf9147a7d28e79caf",
+      "console_sha256": "e40e9bc00e848f7f18e529f677d7c68acc949f769f6509788048cf8e87263e56",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "source_node": 0,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 1,
+        "payload_bytes": 2048,
+        "sent": 1,
+        "received": 1,
+        "frames": 1,
+        "payload_valid": true,
+        "enqueue_s": 1.027,
+        "tx_s": 1.027022976,
+        "received_s": 1.034305205,
+        "distance_m": 2087671.19246918,
+        "observed_frame_s": 0.000319507,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1.027,
+          "source_node": 0,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 2048
+        },
+        {
+          "event": "feeder-frame-tx",
+          "time_s": 1.027022976,
+          "source_node": 0,
+          "device_index": 0,
+          "feeder_mac": "01-06-00:00:00:00:00:06",
+          "beam": 43,
+          "frame_duration_s": 0.000319507,
+          "distance_m": 2087671.19246918
+        },
+        {
+          "event": "ground-application-rx",
+          "time_s": 1.034305205,
+          "receiver_node": 2,
+          "device_index": 1,
+          "payload_bytes": 2048
+        }
+      ]
+    },
+    {
+      "run_id": "onboard-native-20260921-3-normal",
+      "scenario": "constellation-eutelsat-geo-2-sats-isls",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "c63d63415ca905116a2ea9c563ea748561c5383a93f00c0b785fdf6fc750f55e",
+      "console_sha256": "830a7d33a25f3d8b5bc321c6eee6c7d250e4fe2dfdcd543beb2123db5453b20e",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "source_node": 1,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 2,
+        "payload_bytes": 1024,
+        "sent": 1,
+        "received": 1,
+        "frames": 1,
+        "payload_valid": true,
+        "enqueue_s": 1,
+        "tx_s": 1.000024704,
+        "received_s": 1.130394329,
+        "distance_m": 38988344.3301599,
+        "observed_frame_s": 0.000319507,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1,
+          "source_node": 1,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 1024
+        },
+        {
+          "event": "feeder-frame-tx",
+          "time_s": 1.000024704,
+          "source_node": 1,
+          "device_index": 0,
+          "feeder_mac": "01-06-00:00:00:00:00:15",
+          "beam": 43,
+          "frame_duration_s": 0.000319507,
+          "distance_m": 38988344.3301599
+        },
+        {
+          "event": "ground-application-rx",
+          "time_s": 1.130394329,
+          "receiver_node": 2,
+          "device_index": 2,
+          "payload_bytes": 1024
+        }
+      ]
+    },
+    {
+      "run_id": "onboard-native-20260921-4-tx-disabled",
+      "scenario": "constellation-leo-2-satellites",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "ad6e37c39a6d476bc0a279730961ad1e238a2e61510263320df9793c5c3f35bb",
+      "console_sha256": "18f4635574c163a9c2bd68c4547d462f1e4f43fdff2a42deb8dd714655d2e912",
+      "result": {
+        "case": "tx-disabled",
+        "passed": true,
+        "source_node": 0,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 1,
+        "payload_bytes": 1024,
+        "sent": 1,
+        "received": 0,
+        "frames": 0,
+        "payload_valid": true,
+        "enqueue_s": 1,
+        "tx_s": -1,
+        "received_s": -1,
+        "distance_m": -1,
+        "observed_frame_s": -1,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1,
+          "source_node": 0,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 1024
+        }
+      ]
+    },
+    {
+      "run_id": "onboard-native-20260921-5-normal",
+      "scenario": "constellation-leo-2-satellites",
+      "seed": 1,
+      "run": 1,
+      "binary_sha256": "ec9f2b67cce96d5fb3c70c884036e080bc981f3164c9e7668221c17bd55cd986",
+      "manifest_sha256": "436525105f4c9dc293d073e67c4e34c98d1a46746cbe66966931248ee4044804",
+      "console_sha256": "8679a6d135154b4e391dafc2c0332c7e590aa4294809b9b8a4594453ca5e4bdd",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "source_node": 0,
+        "source_device": 0,
+        "receiver_node": 2,
+        "receiver_device": 1,
+        "payload_bytes": 1024,
+        "sent": 1,
+        "received": 1,
+        "frames": 1,
+        "payload_valid": true,
+        "enqueue_s": 1,
+        "tx_s": 1.000024704,
+        "received_s": 1.007307076,
+        "distance_m": 2087714.13121582,
+        "observed_frame_s": 0.000319507,
+        "bandwidth_hz": 125000000,
+        "roll_off": 0.2,
+        "guard_s": 9.9999999999997e-07,
+        "tolerance_s": 2e-06
+      },
+      "events": [
+        {
+          "event": "onboard-enqueue",
+          "time_s": 1,
+          "source_node": 0,
+          "device_type": "ns3::SatOrbiterNetDeviceDvb",
+          "device_index": 0,
+          "payload_bytes": 1024
+        },
+        {
+          "event": "feeder-frame-tx",
+          "time_s": 1.000024704,
+          "source_node": 0,
+          "device_index": 0,
+          "feeder_mac": "01-06-00:00:00:00:00:06",
+          "beam": 43,
+          "frame_duration_s": 0.000319507,
+          "distance_m": 2087714.13121582
+        },
+        {
+          "event": "ground-application-rx",
+          "time_s": 1.007307076,
+          "receiver_node": 2,
+          "device_index": 1,
+          "payload_bytes": 1024
+        }
+      ]
+    }
+  ],
+  "relay_regression": [
+    {
+      "run_id": "relay-regression-20260921-0-normal",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "executions": 1,
+        "rejections": 0,
+        "attempts": 2,
+        "receipt": 1,
+        "delivered_s": 3.13522,
+        "receipt_s": 3.39505,
+        "application_bytes_sent": 9408
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "22f8c15148ef20945cd6595048faca8ccfa7fe53c7d745afc1ed6380e2af0bbc",
+      "manifest_sha256": "ccb082f20b1d1262b632f8b80a37351774b86629be92f1cc1384f24f0db47f7e"
+    },
+    {
+      "run_id": "relay-regression-20260921-1-wrong-subject",
+      "result": {
+        "case": "wrong-subject",
+        "passed": true,
+        "executions": 0,
+        "rejections": 1,
+        "attempts": 1,
+        "receipt": 0,
+        "delivered_s": -1,
+        "receipt_s": -1,
+        "application_bytes_sent": 320
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "d6b02cbd83270e3d7498157b02ca24da6d8ff7caac30c9aee19ed9f54ff9841b",
+      "manifest_sha256": "5ae2b2770bd1419fea4dc110161c720faadfcb70510719300e2a77ca9ebdf49d"
+    },
+    {
+      "run_id": "relay-regression-20260921-2-expired",
+      "result": {
+        "case": "expired",
+        "passed": true,
+        "executions": 0,
+        "rejections": 1,
+        "attempts": 1,
+        "receipt": 0,
+        "delivered_s": -1,
+        "receipt_s": -1,
+        "application_bytes_sent": 320
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "94fad5492581c4f35beefb9c8e4e7f8446a3d9c1d604715493ca6234163d8f59",
+      "manifest_sha256": "92e108a00439c170d2b2efa28572659fde9978e3a2b573b647e9b05ab920c44a"
+    },
+    {
+      "run_id": "relay-regression-20260921-3-lost-receipt",
+      "result": {
+        "case": "lost-receipt",
+        "passed": true,
+        "executions": 1,
+        "rejections": 0,
+        "attempts": 2,
+        "receipt": 1,
+        "delivered_s": 3.13522,
+        "receipt_s": 3.61761,
+        "application_bytes_sent": 9344
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "abc890460c2f9cface43a60e5f1d5d62bf467f60980a6398ecd1cf303c06e4ca",
+      "manifest_sha256": "3fff57797820a42dd207cc0bd328665a0c63ca714008e9862f90534d54d5a7da"
+    },
+    {
+      "run_id": "relay-regression-20260921-4-conflict",
+      "result": {
+        "case": "conflict",
+        "passed": true,
+        "executions": 1,
+        "rejections": 1,
+        "attempts": 2,
+        "receipt": 1,
+        "delivered_s": 3.13522,
+        "receipt_s": 3.39505,
+        "application_bytes_sent": 9728
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "5cb4afcff47ece2b944fa282828007905f5108ad43af3d812307576c63e80db5",
+      "manifest_sha256": "1ecceb0fc39613c4fa8cf1000b4f5bd3e0faa95236ff7e663f5275b9a4fb6113"
+    },
+    {
+      "run_id": "relay-regression-20260921-5-deadline",
+      "result": {
+        "case": "deadline",
+        "passed": true,
+        "executions": 0,
+        "rejections": 0,
+        "attempts": 1,
+        "receipt": 0,
+        "delivered_s": -1,
+        "receipt_s": -1,
+        "application_bytes_sent": 256
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "b36a4bfeb396dfaaa0bf27cd90ffbe516d6b5ed8579e5916f959f95c4be258f0",
+      "manifest_sha256": "e80348a4b3633a0c6860259d1f99b424305ca29ed5ff2bde2ba590179e0f34db"
+    },
+    {
+      "run_id": "relay-regression-20260921-6-normal",
+      "result": {
+        "case": "normal",
+        "passed": true,
+        "executions": 1,
+        "rejections": 0,
+        "attempts": 2,
+        "receipt": 1,
+        "delivered_s": 3.13522,
+        "receipt_s": 3.39505,
+        "application_bytes_sent": 9408
+      },
+      "binary_sha256": "b2ac7996309cb726dde07359d2295ed68792429687cb90e5a0914b6cb68fea58",
+      "console_sha256": "22f8c15148ef20945cd6595048faca8ccfa7fe53c7d745afc1ed6380e2af0bbc",
+      "manifest_sha256": "dc5616cbc627f03f3b33a5eeda2e98c6e9e66827dbb7311eca61117212860eaf"
+    }
+  ]
+}
