@@ -10,6 +10,18 @@ previous implementation was removed and the lab was rebuilt from scratch. The
 repository keeps the name `scrap-hypatia-lab`, but Hypatia is no longer a dependency.
 Git history and the tag `archive/pre-sns3-rebuild-20260913` preserve the old version.
 
+## Partner downlink v1 planning
+
+The next study milestone focuses on partner ground-station downlink, ground-planned
+routes, and synthetic operator workloads, without product processing. Its specification
+is a draft; unresolved modeling assumptions are tracked explicitly.
+
+- [Study contract](docs/study-contract.md): enduring comparison and evidence rules.
+- [Draft specification](docs/specifications/partner-downlink-v1.md): required behavior, scope, and acceptance criteria.
+- [Implementation plan](docs/plans/partner-downlink-v1.md): ticket index, dependencies, and delivery checkpoints.
+- [Partner downlink v1 milestone](https://github.com/dyson-labs-org/scrap-hypatia-lab/milestone/1): detailed issues and current status.
+- [Open modeling decisions (#29)](https://github.com/dyson-labs-org/scrap-hypatia-lab/issues/29).
+
 ## Purpose of the study
 
 The intended customer study follows a captured observation product through
