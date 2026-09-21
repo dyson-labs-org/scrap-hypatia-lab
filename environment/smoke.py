@@ -24,13 +24,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--scenario', default='constellation-eutelsat-geo-2-sats-isls')
     parser.add_argument('--program', choices=['sat-constellation-example',
-                        'scrap-relay-lifecycle'], default='sat-constellation-example')
+                        'scrap-relay-lifecycle', 'scrap-onboard-downlink'], default='sat-constellation-example')
     parser.add_argument('--case', choices=['normal', 'wrong-subject', 'expired',
-                        'lost-receipt', 'conflict', 'deadline'], default='normal')
+                        'lost-receipt', 'conflict', 'deadline', 'tx-disabled'], default='normal')
+    parser.add_argument('--payload-bytes', type=int, default=1024)
+    parser.add_argument('--send-at', type=float, default=1.0)
     parser.add_argument('--run-id', required=True)
     parser.add_argument('--seed', type=int, default=1)
     parser.add_argument('--run', type=int, default=1)
     args = parser.parse_args()
+    if args.program == 'scrap-onboard-downlink':
+        if args.case not in ('normal', 'tx-disabled'):
+            parser.error('Onboard cases are normal and tx-disabled.')
+        if not 64 <= args.payload_bytes <= 2048 or not 0.5 <= args.send_at <= 2:
+            parser.error('Onboard fixture requires 64..2048 bytes and send-at 0.5..2 s.')
+    elif args.case == 'tx-disabled':
+        parser.error('tx-disabled is an onboard-only case.')
     if os.name != 'posix':
         parser.error('Run in Linux or WSL2.')
     for value in (args.run_id, args.scenario):
@@ -63,7 +72,9 @@ def main():
     program = shlex.join([args.program,
         '--scenarioFolder=' + args.scenario, '--OutputPath=' + str(stats),
         '--RngSeed=' + str(args.seed), '--RngRun=' + str(args.run)] +
-        (['--case=' + args.case] if args.program == 'scrap-relay-lifecycle' else []))
+        (['--case=' + args.case] if args.program.startswith('scrap-') else []) +
+        ([f'--payloadBytes={args.payload_bytes}', f'--sendAt={args.send_at}']
+         if args.program == 'scrap-onboard-downlink' else []))
     command = ['bash', str(ROOT / 'environment/ns3.sh'), 'run', program,
                '--no-build', '--cwd=' + str(output)]
     git = lambda *items: subprocess.check_output(['git', *items], cwd=ROOT, text=True).strip()

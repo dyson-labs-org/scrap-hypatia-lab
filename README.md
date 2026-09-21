@@ -36,20 +36,27 @@ The current implementation provides:
 - Working upstream GEO and two-satellite LEO scenarios with received traffic.
 - A new C++ behavioral application for authorization, chunked product transfer,
   processing, delivery, and receipt recovery over native SNS-3 relay links.
-- Six integration cases: normal completion, wrong subject, expired permission,
+- An onboard application adapter that sends a small UDP payload through the
+  native feeder downlink to a gateway socket, with independent timing checks,
+  a disabled-transmitter control, and repeatability checks.
+- Six relay integration cases: normal completion, wrong subject, expired permission,
   lost receipt, conflicting token reuse, and an insufficient delivery deadline.
 - Repeatable runs with source/input and executable hashes, seeds, commands,
   console logs, statistics, and terminal outcomes. Failed runs remain recorded.
 - Bootstrap safeguards and upstream mobility/constellation validation.
 
 See [baseline validation](docs/baseline-validation.md) and the
-[behavioral application profile](docs/relay-profile.md) for the evidence and details.
+[behavioral application profile](docs/relay-profile.md) for the relay evidence.
+The [onboard integration note](docs/onboard-downlink.md) describes the feeder
+adapter, its assumptions, timing checks, and contact extension point.
 
 ## Current limits
 
-The application endpoints are currently **ground nodes communicating through
-satellite relays**. Onboard EO endpoints and customer constellation workloads
-still need implementation and validation. This is research software.
+The behavioral lifecycle still uses **ground nodes communicating through
+satellite relays**. The separate onboard probe establishes a small, unidirectional
+satellite-to-gateway path through a feeder MAC adapter. It does not provide a
+bidirectional onboard IP stack, EO product transport, or moving-contact control.
+Customer constellation workloads still need implementation and validation.
 
 Authorization uses a synthetic behavioral encoding, not real cryptography.
 Its 1 ms authorization and 5 ms processing costs are explicit assumptions.
@@ -67,11 +74,12 @@ an isolated environment and refuses mismatched or modified dependency sources.
 
 ```sh
 python3 environment/bootstrap.py
-environment/ns3.sh build sat-constellation-example test-runner scrap-relay-lifecycle -j 3
+environment/ns3.sh build sat-constellation-example test-runner scrap-relay-lifecycle scrap-onboard-downlink -j 3
 python3 -m unittest discover -s tests -v
 python3 environment/smoke.py --run-id geo-01
 python3 environment/smoke.py --scenario constellation-leo-2-satellites --run-id leo-01
 python3 tests/run_integration.py --prefix lifecycle-01
+python3 tests/run_onboard.py --prefix onboard-01
 ```
 
 Use fresh run IDs and prefixes: existing results are never overwritten. Each
@@ -81,7 +89,7 @@ excludes optional external fading traces of approximately 3.4 GB; scenarios that
 need those traces are outside this bootstrap profile. Antenna patterns still
 require approximately 442 MB. There is no simulator fallback.
 
-The next study steps are onboard application integration, controlled EO contact
-and workload scenarios, hardware calibration, and paired customer comparisons.
+The next study steps are onboard product transport, controlled EO contact and
+workload scenarios, hardware calibration, and paired customer comparisons.
 The [study contract](docs/study-contract.md) defines the assumptions and evidence
 required before making customer-facing performance claims.
